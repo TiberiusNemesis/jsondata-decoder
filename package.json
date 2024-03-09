@@ -1,7 +1,7 @@
 {
   "name": "jsondata-decoder",
   "displayName": "jsondata Decoder",
-  "description": "A tool to quickly transform a jsondata object (most likely from the Chrome Developer Tools request payload) into a formatted, readable JSON format.",
+  "description": "A tool to quickly transform JSON (including jsondata objects from Chrome Developer Tools request payloads) into a clean, readable format.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.87.0"
@@ -31,17 +31,20 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.87.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
-    "ts-loader": "^9.5.1",
-    "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4",
     "@vscode/test-cli": "^0.0.6",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "mocha": "^10.3.0",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2",
+    "vscode-test": "^1.6.1",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
   }
 }
