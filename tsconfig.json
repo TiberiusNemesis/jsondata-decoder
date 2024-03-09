@@ -1,11 +1,12 @@
 {
 	"compilerOptions": {
+	  "skipLibCheck": true,
 	  "target": "es6",
 	  "module": "commonjs",
 	  "sourceMap": true,
 	  "outDir": "./dist",
 	  "rootDir": "./src"
 	},
-	"include": ["src/**/*.ts"],
+	"include": ["src/**/*.ts", "src/*.ts"],
 	"exclude": ["node_modules"]
   }

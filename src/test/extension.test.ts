@@ -1,11 +1,17 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
+import * as decoder from '../extension';
 
-suite('Extension Test Suite', () => {
-	vscode.window.showInformationMessage('Start all tests.');
+suite('Extension Tests', () => {
+  suiteSetup(async () => {
+    const extension = vscode.extensions.getExtension('extension.formatAndCopyJson');
+    if (!extension?.isActive) {
+      await extension?.activate();
+    }
+  });
 
-	test('Sample test', () => {
-		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
-		assert.strictEqual(-1, [1, 2, 3].indexOf(0));
+  test('Sample Test', async () => {
+		assert.strictEqual(1, 1);
 	});
+
 });
