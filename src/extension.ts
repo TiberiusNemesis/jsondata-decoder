@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { unescape } from 'querystring';
 import { ClipboardHelper } from './clipboardHelper';
 
-let clipboardText;
+let clipboardText = '';
 
 export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('extension.formatAndCopyJson', runExtension);
@@ -11,10 +11,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 export async function runExtension() {
 	clipboardText = await ClipboardHelper.readTextFromClipboard();
-	if (clipboardText) {
+	if (clipboardText.trim() !== '') {
 		unescapeData(clipboardText);
+		formatAndCopyJson(clipboardText);
 	}
-	await formatAndCopyJson(clipboardText);
+	
 }
 
 // Removes the 'jsondata=' prefix from the clipboard text and unescapes the JSON data
@@ -36,7 +37,7 @@ export async function formatAndCopyJson(clipboardText: string) {
 		await ClipboardHelper.writeTextToClipboard(formatted); 
 		vscode.window.showInformationMessage('JSON formatted and copied to clipboard.');
 	} catch (error: any) {
-		vscode.window.showErrorMessage(`Error parsing JSON: ${error.message}. Check for common syntax issues like missing commas or quotation marks.`, 'View Help').then(selection => {
+		vscode.window.showErrorMessage(`Error parsing JSON: ${error.message}. \nCheck for common syntax issues like missing commas or quotation marks.`, 'View Help').then(selection => {
 			if (selection === 'View Help') {
 				vscode.env.openExternal(vscode.Uri.parse('https://www.json.org/json-en.html'));
 			}
